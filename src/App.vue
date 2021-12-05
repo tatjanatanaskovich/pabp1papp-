@@ -1,15 +1,19 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
+  <Kategorija />
   <Proizvod />
+
 </template>
 
 <script>
 import Proizvod from './components/Proizvod.vue'
+import Kategorija from './components/Kategorija.vue'
+
 
 export default {
   name: 'App',
   components: {
-    Proizvod
+    Proizvod,
+    Kategorija
   }
 }
 </script>

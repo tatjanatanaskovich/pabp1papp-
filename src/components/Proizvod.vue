@@ -1,18 +1,22 @@
 <template>
   <div>
+    <h2>Prikaži proizvod</h2>
+    <button @click="GetProducts()" v-for="proizvod in proizvodi" :key="proizvod.productId">
+      Prikazi proizvod
+    </button>
     <h2>Unos proizvoda</h2>
     <div id="unos_proizvoda">
       <div>
         <label for="">Naziv proizvoda </label>
-        <input type="text" v-model="proizvod.naziv">
+        <input type="text" v-model="proizvod.productName">
       </div>
       <div>
         <label for="">Cena proizvoda </label>
-        <input type="number" v-model="proizvod.cena">
+        <input type="number" v-model="proizvod.unitPrice">
       </div>
       <div>
         <label for="">Količina proizvoda </label>
-        <input type="number" v-model="proizvod.kolicina">
+        <input type="number" v-model="proizvod.unitsInStock">
       </div>
       <div>
         <button @click="UnesiProizvod()" :disabled="ProveriUnos">Unesi proizvod</button>
@@ -25,13 +29,14 @@
           <td>Naziv proizvoda</td>
           <td>Raspoloživa količina proizvoda</td>
           <td>Cena proizvoda</td>
-          <td></td>
+          <td>Ukupna vrednost proizvoda</td>
         </th>
         <tbody>
           <tr  v-for="(p,index) in proizvodi" :key="p">
-            <td>{{ p.naziv }}</td>
-            <td>{{ p.kolicina }}</td>
-            <td>{{ p.cena }}</td>
+            <td>{{ p.productName }}</td>
+            <td>{{ p.unitsInStock }}</td>
+            <td>{{ p.unitPrice }}</td>
+            <td>{{ p.ukupnavrednost }}</td>
             <td><button @click="IzmeniProizvod(index)">Izmeni proizvod</button></td>
             <td><button @click="ObrisiProizvod(index)">Obriši proizvod</button></td>
           </tr>
@@ -42,53 +47,37 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'Proizvod',
   data(){
     return {
-      proizvod:{},
-      proizvodi:[]
+      proizvodi:{
+        productId: 1,
+        productName: String,
+        categoryId: String,
+        category: null,
+        unitPrice: Number,
+        unitsInStock: Number
+      },
+      proizvod:[]
     }
   },
   methods:{
-    UnesiProizvod(){
-      this.proizvod.naziv=this.proizvod.naziv.trim();
-      this.proizvod.cena=parseInt(this.proizvod.cena);
-      this.proizvod.kolicina=parseInt(this.proizvod.kolicina);
-      this.proizvodi.push(this.proizvod);
-      this.proizvod={}
-    },
-    IzmeniProizvod(rb){
-      this.proizvodi.push({
-        index:rb,
-        kolicina:1
-      });
-    },
-    ObrisiProizvod(rb){
-      this.proizvodi.pop({
-        index:rb,
-        kolicina:1
-      });
-    }
-  },
-  computed:{
-    ProveriUnos(){
-      if(Number.isNaN(parseInt(this.proizvod.cena)) || Number.isNaN(parseInt(this.proizvod.kolicina))){
-        return true;
-      }
-      return false;
-    },
-   
-    ProveriKolicinu(){
-      return function(artikal){
-        if(artikal.kolicina>this.proizvodi[artikal.index].kolicina){
-          return "background-color:#F08080";
-        }
-        return "";
-      }
-    }
+    GetProducts(){
+        axios.get('http://94.156.189.137:8000/api/Products/'+this.proizvod.id)
+        .then((response)=> {
+          this.proizvodi = response.data;
+          console.log('proizvodi: ' + JSON.stringify(this.proizvodi));
+        })
+        .catch(function (error){
+          console.log(error);
+        })
+      },
   }
 }
+
+    
 </script>
 
 <style>
