@@ -8,7 +8,7 @@
          <div v-if="add">
              <input type="text" v-model="newProduct.productName">
              <input type="checkbox" v-model="newProduct.discontinued">
-             <button @click="AddProduct()">Dodaj</button>
+             <button @click="AddProduct()">Dodaj proizvod</button>
          </div>
          <button @click="add=true">Add product</button>
     </table>

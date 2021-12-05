@@ -2,42 +2,44 @@
   <div id="mydiv">
     <h2>Izaberi kategoriju</h2>
     <label>Izaberi jednu od kategorija</label>
-    <select v-model="kategorija.categoryName" @click="GetCategories()">
-      <option v-for="kategorija in kategorije" :key="kategorija.categoryId">{{kategorija.categoryName}}</option>
+    <select v-model="category.categoryName" @click="GetCategories()">
+      <option v-for="category in categories" :key="category.categoryId">{{category.categoryName}}</option>
     </select>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
-export default {
-  name: 'Kategorija',
-    data () {
-      return {
-        kategorija: {
-          categoryId: 0,
-          categoryName: String,
-          description: String,
-          products: []
-        },
-        kategorije: [],
-      }
-    },
+  import axios from 'axios'
+  export default {
+    name: 'CategoryRow',
+      data () {
+        return {
+          category: {
+            categoryId: 0,
+            categoryName: String,
+            description: String,
+            products: []
+          },
+          categories: [],
+        }
+      },
  
     methods: {
+
       GetCategories(){
         axios.get('http://94.156.189.137:8000/api/Categories')
         .then((response)=> {
-          this.kategorije = response.data;
-          console.log('kategorije: ' + JSON.stringify(this.kategorije));
+          this.categories = response.data;
+          console.log('categories: ' + JSON.stringify(this.categories));
         })
         .catch(function (error){
           console.log(error);
         })
       },
-      
+
     },
-}
+    
+  }
 </script>
 
 <style>
