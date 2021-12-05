@@ -1,18 +1,18 @@
 <template>
   <Kategorija />
-  <Proizvod />
+  <ProductTable />
 
 </template>
 
 <script>
-import Proizvod from './components/Proizvod.vue'
+import ProductTable from './components/ProductTable.vue'
 import Kategorija from './components/Kategorija.vue'
 
 
 export default {
   name: 'App',
   components: {
-    Proizvod,
+    ProductTable,
     Kategorija
   }
 }

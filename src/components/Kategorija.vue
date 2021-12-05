@@ -35,9 +35,7 @@ export default {
           console.log(error);
         })
       },
-      ListProducts(){
-
-      }
+      
     },
 }
 </script>
