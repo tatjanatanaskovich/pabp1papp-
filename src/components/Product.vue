@@ -5,11 +5,20 @@
   <table>
     <th>
       <tr>
-        <td>Naziv Proizvoda</td>
-        <td>ID Proizvoda</td>
-        <td>Opis Proizvoda</td>
+        <td><ul><li style="list-style-type: none;">Naziv Proizvoda</li></ul></td>
+        <td><ul><li style="list-style-type: none;">ID Proizvoda</li></ul></td>
+        <td><ul><li style="list-style-type: none;">Cena Proizvoda u dinarima - RSD</li></ul></td>
+        <td><ul><li style="list-style-type: none;">Kontrole</li></ul></td>
       </tr>
     </th>
+
+    <div>
+      <input type="text" v-model="newProduct.productName">
+      <button @click="AddNewProduct()">Dodaj proizvod</button>
+      <p>{{newProduct.productName}}</p>
+    </div>
+    
+
     <tr>
       <td>
         <ol>
@@ -23,10 +32,17 @@
       </td>
       <td>
         <ul>
-          <li v-for="product in products" :key="product.productId">{{product.description}}</li>
+          <li v-for="product in products" :key="product.productId" style="list-style-type: none;">{{product.unitPrice}} RSD</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li v-for="product in products" :key="product.productId" style="list-style-type: none;">
+          </li>
         </ul>
       </td>
     </tr>
+
   </table>
 </template>
 
@@ -38,6 +54,7 @@
     data () {
       return {
         products: [],
+        newProduct:{}
       }
     },
 
@@ -51,8 +68,26 @@
           .catch(function (error){
             console.log(error);
           })
+      },
+      AddNewProduct(){
+        this.product.id = undefined;
+        axios.post(`http://94.156.189.137:8000/api/Products`,this.newProduct)
+        .then((response)=> {
+          console.log(response)
+          this.newProduct.productId=response.data.productId
+          this.products.push(this.newProduct)
+          this.newProduct={}
+        
+          })
+          .catch(function (error){
+            console.log(error);
+          })
       }
     },
+    // ako hocemo da se pri mauntovanju odmah prikazuju svi proizvodi
+    // mounted(){
+    //     this.GetProducts()
+    // }
 
   }
 </script>

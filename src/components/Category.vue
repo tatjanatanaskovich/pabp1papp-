@@ -5,9 +5,13 @@
   <table>
     <th>
       <tr>
+        <td>|</td>
         <td>Naziv Kategorije</td>
+        <td>|</td>
         <td>ID Kategorije</td>
+        <td>|</td>
         <td>Opis Kategorije</td>
+        <td>|</td>
       </tr>
     </th>
     <tr>
