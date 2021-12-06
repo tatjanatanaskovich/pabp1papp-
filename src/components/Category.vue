@@ -1,6 +1,7 @@
 <template class="category">
   <p><b>Ovo je komonenta Category</b></p>
-  <p>Dobijanje metodom GET liste sa svim kategorijama</p>
+  <p>Dobijanje metodom GET liste sa svim kategorijama. 
+    Klikom na dugme prikazuju se sve kategorije.</p>
   <button @click="GetCategories()">Prikazi sve kategorije</button>
   <table>
     <th>
@@ -38,7 +39,7 @@
       <td>
         <ul>
           <li>
-            <button @click="GetProductsInCategory()">Prikazi sve proizvode iz te kategorije</button>
+            <button @click="GetProductsInCategory()">Prikazi sve proizvode iz odabrane kategorije</button>
           </li>
         </ul>
       </td>

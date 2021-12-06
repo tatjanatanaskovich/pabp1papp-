@@ -2,20 +2,17 @@
   <p><b>Ovaj deo je komponenta CategoryTable.</b></p>
     <table>
       <Category />
-      <CategoryRow />
     </table>
 </template>
 
 <script>
   import axios from 'axios'
   import Category from './Category.vue'
-  import CategoryRow from './CategoryRow.vue'
 
   export default {
     name:'CategoryTable',
     components:{
-      Category,
-      CategoryRow
+      Category
     },
     data(){
       return {

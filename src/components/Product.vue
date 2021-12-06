@@ -1,6 +1,7 @@
 <template class="product">
   <p><b>Ovo je komonenta Product</b></p>
-  <p>Dobijanje metodom GET liste sa svim proizvodima</p>
+  <p>Dobijanje metodom GET liste sa svim proizvodima. 
+    Klikom na dugme prikazuju se svi proizvodi.</p>
   <button @click="GetProducts()">Prikazi sve proizvode</button>
   <table>
     <th>
@@ -15,7 +16,7 @@
     <div>
       <input type="text" v-model="newProduct.productName">
       <button @click="AddNewProduct()">Dodaj proizvod</button>
-      <p>{{newProduct.productName}}</p>
+      <p>Proizvod {{newProduct.productName}} je dodat!</p>
     </div>
     
 
@@ -47,7 +48,9 @@
 </template>
 
 <script>
+
   import axios from 'axios'
+
   export default {
     name: 'Product',
 

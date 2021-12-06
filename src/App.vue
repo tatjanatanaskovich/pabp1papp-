@@ -1,25 +1,24 @@
 <template>
   <div class="container">
     <Header />
-    <CategoryTable />
-    <ProductTable />
-    
+    <Category />
+    <Product />
   </div>
   <Footer />
 </template>
 
 <script>
   import Header from './components/Header.vue'
-  import ProductTable from './components/ProductTable.vue'
-  import CategoryTable from './components/CategoryTable.vue'
+  import Product from './components/Product.vue'
+  import Category from './components/Category.vue'
   import Footer from './components/Footer.vue'
 
   export default {
     name: 'App',
     components: {
       Header,
-      CategoryTable,
-      ProductTable,
+      Category,
+      Product,
       Footer
     }
   }
