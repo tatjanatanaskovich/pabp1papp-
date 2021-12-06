@@ -1,6 +1,6 @@
 <template class="category">
   <p><b>Ovo je komonenta Category</b></p>
-  <p>Dobijanje GET liste kategorija</p>
+  <p>Dobijanje metodom GET liste sa svim kategorijama</p>
   <button @click="GetCategories()">Prikazi sve kategorije</button>
   <table>
     <th>
@@ -21,9 +21,21 @@
           <li v-for="category in categories" :key="category.categoryId">{{category.categoryId}}</li>
         </ul>
       </td>
-      <td>
+      <!-- <td>
+        <ul>
+          <li v-for="category in categories" :key="category.products">{{category.products}}</li>
+        </ul>
+      </td>-->
+      <td> 
         <ul>
           <li v-for="category in categories" :key="category.categoryId">{{category.description}}</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>
+            <button @click="GetProductsInCategory()">Prikazi sve proizvode iz te kategorije</button>
+          </li>
         </ul>
       </td>
     </tr>
@@ -36,10 +48,11 @@
     name: 'Category',
 
     data () {
-        return {
-          categories: [],
-        }
-      },
+      return {
+        categories: [],
+        products: [],
+      }
+    },
 
     methods: {
       GetCategories(){
@@ -47,6 +60,17 @@
           .then((response)=> {
             this.categories = response.data;
           console.log('categories: ' + JSON.stringify(this.categories));
+          })
+          .catch(function (error){
+            console.log(error);
+          })
+        },
+        
+        GetProductsInCategory(categoryId){
+        axios.get(`http://94.156.189.137:8000/api/Categories/products/${categoryId}`)
+          .then((response)=> {
+            this.products = response.data;
+          console.log('products: ' + JSON.stringify(this.products.categoryId));
           })
           .catch(function (error){
             console.log(error);
@@ -62,5 +86,6 @@
   font-style: oblique;
   background-color: black;
   text-align: left;
+  list-style-type:none;
 }
 </style>
