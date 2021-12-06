@@ -1,4 +1,5 @@
 <template>
+  <p><b>Ovaj deo je komponenta CategoryTable.</b></p>
     <table>
       <CategoryRow />
     </table>

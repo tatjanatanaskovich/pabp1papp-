@@ -1,10 +1,20 @@
 <template>
+    <p><b>Ovaj deo je komponenta ProductTable.</b></p>
     <table>
-        <ProductRow v-for="p in products" :key="p.productId"
-         :product="p" @productDeleteEvent="onProductDelete" />
-         <select name="" id="">
-             <option v-for="p in PageNumber" :key="p" :value="p">{{p+1}}</option>
-         </select>
+        <tr>
+            <th>Naziv proizvoda</th>
+            <th>Distributer/Dobavljač proizvoda</th>
+        </tr>
+        <tr>
+            <td>Deo table data
+                <ProductRow v-for="p in products" :key="p.productId" :product="p" @productDeleteEvent="onProductDelete" />
+                <select name="" id="">
+                    <option v-for="p in PageNumber" :key="p" :value="p">{{p+1}}</option>
+                </select>
+            </td>
+        </tr>
+        
+         
          <div v-if="add">
              <input type="text" v-model="newProduct.productName">
              <input type="checkbox" v-model="newProduct.discontinued">

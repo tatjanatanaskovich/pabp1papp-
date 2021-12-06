@@ -1,5 +1,6 @@
 <template>
   <div id="mydiv">
+    <p><b>Ovaj deo je komponenta CategoryRow.</b></p>
     <label>Izaberi jednu od kategorija</label>
     <select v-model="category.categoryName" @click="GetCategories()">
       <option v-for="category in categories" :key="category.categoryId">{{category.categoryName}}</option>
