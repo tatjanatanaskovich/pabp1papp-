@@ -11,12 +11,12 @@
   export default {
     name:'CategoryTable',
     components:{
-        CategoryRow
+      CategoryRow
     },
     data(){
-        return {
-            category:[]
-        }
+      return {
+        categories: [],
+      }
     },
     methods:{
 

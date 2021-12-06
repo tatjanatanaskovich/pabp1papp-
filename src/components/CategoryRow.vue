@@ -1,6 +1,5 @@
 <template>
   <div id="mydiv">
-    <h2>Izaberi kategoriju</h2>
     <label>Izaberi jednu od kategorija</label>
     <select v-model="category.categoryName" @click="GetCategories()">
       <option v-for="category in categories" :key="category.categoryId">{{category.categoryName}}</option>
@@ -12,13 +11,13 @@
   import axios from 'axios'
   export default {
     name: 'CategoryRow',
+    
       data () {
         return {
           category: {
             categoryId: 0,
             categoryName: String,
-            description: String,
-            products: []
+            description: String
           },
           categories: [],
         }
@@ -38,7 +37,7 @@
       },
 
     },
-    
+
   }
 </script>
 
