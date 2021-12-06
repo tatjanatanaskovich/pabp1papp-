@@ -38,7 +38,7 @@
       </td>
       <td>
         <ul>
-          <li>
+          <li style="list-style-type: none;">
             <button @click="GetProductsInCategory()">Prikazi sve proizvode iz odabrane kategorije</button>
           </li>
         </ul>

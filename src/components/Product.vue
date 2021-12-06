@@ -16,7 +16,7 @@
     <div>
       <input type="text" v-model="newProduct.productName">
       <button @click="AddNewProduct()">Dodaj proizvod</button>
-      <p>Proizvod {{newProduct.productName}} je dodat!</p>
+      <p>Prikaz testiranja radi: Proizvod {{newProduct.productName}} je dodat!</p>
     </div>
     
 
