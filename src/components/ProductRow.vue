@@ -1,6 +1,6 @@
 <template>
     <p><b>Ovaj deo je komponenta ProductRow.</b></p>
-
+    
     <table>
         <tr>
             <th>Naziv proizvoda</th>
@@ -76,7 +76,7 @@
                 
             }
         },
-        
+
         mounted(){
             this.GetSupplier(this.product.supplierId)
             this.productCopy=this.product

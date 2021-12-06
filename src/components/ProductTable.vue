@@ -7,6 +7,7 @@
         </tr>
         <tr>
             <td>Deo table data
+                <Product />
                 <ProductRow v-for="p in products" :key="p.productId" :product="p" @productDeleteEvent="onProductDelete" />
                 <select name="" id="">
                     <option v-for="p in PageNumber" :key="p" :value="p">{{p+1}}</option>
@@ -24,11 +25,15 @@
     </table>
 </template>
 <script>
+
 import axios from 'axios'
 import ProductRow from './ProductRow.vue'
+import Product from './Product.vue'
+
 export default {
     name:'ProductTable',
     components:{
+        Product,
         ProductRow
     },
     data(){
